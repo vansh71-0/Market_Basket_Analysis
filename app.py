@@ -271,6 +271,7 @@ elif selected == "EDA Analysis":
 
     col1, col2 = st.columns(2)
 
+    # ---------------- Chart 1 ----------------
     with col1:
         st.write("Top Selling Products (Revenue)")
 
@@ -283,6 +284,7 @@ elif selected == "EDA Analysis":
 
         st.bar_chart(top_product)
 
+    # ---------------- Chart 2 ----------------
     with col2:
         st.write("Most Purchased Products (Quantity)")
 
@@ -294,29 +296,36 @@ elif selected == "EDA Analysis":
         )
 
         st.bar_chart(top_quantity)
+
     st.divider()
-    col1,col2 = st.columns(2)
-    with col 1:
-        top_products = (
-            dataset.groupby('Description')['Quantity']
-            .sum()
-            .sort_values(ascending=False)
+
+    col1, col2 = st.columns(2)
+
+    # ---------------- Chart 3 ----------------
+    with col1:
+
+        country_orders = (
+            dataset['Country']
+            .value_counts()
             .head(10)
         )
-    
-        st.subheader("Top 10 Selling Products")
-        st.bar_chart(top_products)
-    with col 2:
-        # ---- Top 10 Customers by Spending ----
+
+        st.subheader("Top 10 Countries by Orders")
+
+        st.bar_chart(country_orders)
+
+    # ---------------- Chart 4 ----------------
+    with col2:
+
         top_customers = (
-            dataset.groupby('CustomerID')['Total_amount']
+            dataset.groupby('Customer ID')['Total_amount']
             .sum()
             .sort_values(ascending=False)
             .head(10)
         )
-        
+
         st.subheader("Top 10 Customers by Spending")
-        
+
         st.bar_chart(top_customers)
 
 # ---------------- RFM PAGE ----------------
