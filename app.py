@@ -297,15 +297,16 @@ elif selected == "EDA Analysis":
 
     st.divider()
 
-    sales_trend = (
-        dataset.set_index('InvoiceDate')
-        .resample('M')['Total_amount']
+    top_products = (
+        dataset.groupby('Description')['Quantity']
         .sum()
-    )
-
-    st.subheader("📈 Monthly Sales Trend")
-
-    st.line_chart(sales_trend)
+        .sort_values(ascending=False)
+        .head(10)
+            )
+        
+        st.subheader("Top 10 Selling Products")
+        
+        st.bar_chart(top_products)
 
 
 # ---------------- RFM PAGE ----------------
