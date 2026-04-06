@@ -297,16 +297,16 @@ elif selected == "EDA Analysis":
 
     st.divider()
 
-    top_products = (
-        dataset.groupby('Description')['Quantity']
-        .sum()
-        .sort_values(ascending=False)
-        .head(10)
-            )
-        
-        st.subheader("Top 10 Selling Products")
-        
-        st.bar_chart(top_products)
+        top_products = (
+            dataset.groupby('Description')['Quantity']
+            .sum()
+            .sort_values(ascending=False)
+            .head(10)
+                )
+            
+            st.subheader("Top 10 Selling Products")
+            
+            st.bar_chart(top_products)
 
 
 # ---------------- RFM PAGE ----------------
