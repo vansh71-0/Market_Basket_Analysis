@@ -294,6 +294,8 @@ elif selected == "EDA Analysis":
         )
 
         st.bar_chart(top_quantity)
+    st.divider()
+    col1,col2 = st.columns(2)
     with col 1:
         top_products = (
             dataset.groupby('Description')['Quantity']
