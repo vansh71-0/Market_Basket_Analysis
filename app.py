@@ -301,7 +301,7 @@ elif selected == "EDA Analysis":
             .sum()
             .sort_values(ascending=False)
             .head(10)
-                )
+        )
             st.subheader("Top 10 Selling Products")
             st.bar_chart(top_products)
 
