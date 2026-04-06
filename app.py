@@ -294,7 +294,7 @@ elif selected == "EDA Analysis":
         )
 
         st.bar_chart(top_quantity)
-
+    with col 1:
         top_products = (
             dataset.groupby('Description')['Quantity']
             .sum()
@@ -304,6 +304,18 @@ elif selected == "EDA Analysis":
     
         st.subheader("Top 10 Selling Products")
         st.bar_chart(top_products)
+    with col 2:
+        # ---- Top 10 Customers by Spending ----
+        top_customers = (
+            dataset.groupby('CustomerID')['Total_amount']
+            .sum()
+            .sort_values(ascending=False)
+            .head(10)
+        )
+        
+        st.subheader("Top 10 Customers by Spending")
+        
+        st.bar_chart(top_customers)
 
 # ---------------- RFM PAGE ----------------
 
